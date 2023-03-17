@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+D:\.dev\Projects\Java\eclipse-workspace\test1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1823557430.index
+\test\src\main\java
+D:\.dev\Projects\Java\eclipse-workspace\test1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2955475526.index
+\BookShop\src\main\java
