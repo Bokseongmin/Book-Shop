@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper">
+
+	<select id="list" resultType="BookVo">
+		SELECT book_id, title, category, price, insert_date
+		FROM book
+		ORDER BY insert_date desc
+	</select>
+
+	<insert id="insert">
+		INSERT INTO book(title, category, price)
+		VALUES(#{title}, #{category}, #{price})
+	</insert>
+	
+	<select id="detail" resultType="BookVo">
+		SELECT book_id, title, category, price, insert_date
+		FROM book
+		WHERE book_id = #{book_id}
+	</select>
+	
+	<update id="update" parameterType="BookVo">
+		UPDATE book
+		SET title = #{title}, category = #{category}, price = #{price}
+		WHERE book_id = #{book_id}
+	</update>
+	
+	<delete id="delete" parameterType="BookVo">
+		DELETE
+		FROM book
+		WHERE book_id = #{book_id}
+	</delete>
+</mapper>
