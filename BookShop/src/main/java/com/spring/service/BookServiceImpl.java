@@ -14,8 +14,8 @@ public class BookServiceImpl implements BookService{
 	@Autowired
 	private BookDao dao;
 
-	public List<BookVo> list() throws Exception {
-		return dao.list();
+	public List<BookVo> list(String keyword) throws Exception {
+		return dao.list(keyword);
 	}
 
 	public void insert(BookVo vo) throws Exception {

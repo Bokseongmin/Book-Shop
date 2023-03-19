@@ -7,7 +7,7 @@ import com.spring.vo.BookVo;
 public interface BookService {
 	
 	// 책 목록
-	public List<BookVo> list() throws Exception;
+	public List<BookVo> list(String keyword) throws Exception;
 	
 	// 책 생성
 	public void insert(BookVo vo) throws Exception;

@@ -18,67 +18,66 @@ import com.spring.vo.BookVo;
 @RequestMapping("/book/*")
 public class BookController {
 	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
-	
+
 	@Autowired
 	BookService service;
-	
-	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public void listGET(Model model) throws Exception {
-		List<BookVo> list = service.list();
+
+	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
+	public void listGET(@RequestParam(value = "keyword", required = false) String keyword, Model model)
+			throws Exception {
+		List<BookVo> list = service.list(keyword);
 		model.addAttribute("books", list);
 	}
-	
-	@RequestMapping(value="/create", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String createGET() {
 		logger.info("book/create - GET");
 		return "book/create";
 	}
-	
-	@RequestMapping(value="/create", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createPOST(BookVo vo) throws Exception {
 		logger.info("book/create - POST");
-		
+
 		service.insert(vo);
-		
+
 		return "redirect:/book/list";
 	}
-	
-	@RequestMapping(value="/detail", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detailGET(@RequestParam("book_id") int book_id, Model model) throws Exception {
 		logger.info("book/detail - GET");
-		
+
 		BookVo vo = service.detail(book_id);
-		
+
 		model.addAttribute("book", vo);
 	}
-	
-	@RequestMapping(value="/update", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void updateGET(@RequestParam("book_id") int book_id, Model model) throws Exception {
 		logger.info("book/update - GET");
-		
+
 		BookVo vo = service.detail(book_id);
-		
+
 		model.addAttribute("book", vo);
 	}
-	
-	@RequestMapping(value="/update", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updatePOST(@RequestParam("book_id") int book_id, BookVo vo, Model model) throws Exception {
 		logger.info("book/update - POST");
-		
+
 		vo.setBook_id(book_id);
 		service.update(vo);
-		
+
 		model.addAttribute("book_id", book_id);
-		
+
 		return "redirect:/book/detail";
 	}
-	
-	@RequestMapping(value="/delete", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String deletePOST(BookVo vo) throws Exception {
-		System.out.println(">>>>>>>>>>>>>>>"+vo.getBook_id());
-		System.out.println(">>>>>>>>>>>>>>>"+vo.getTitle());
 		service.delete(vo);
-		
+
 		return "redirect:/book/list";
 	}
 }

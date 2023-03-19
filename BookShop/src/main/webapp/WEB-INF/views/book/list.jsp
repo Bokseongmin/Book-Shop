@@ -10,6 +10,10 @@
 </head>
 <body>
 	<h1>책 목록</h1>
+	<form>
+		<input type="text" placeholder="검색" name="keyword" value="${keyword}" />
+		<input type="submit" value="검색" />
+	</form>
 	<table>
 		<thead>
 			<tr>

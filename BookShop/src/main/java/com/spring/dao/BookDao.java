@@ -9,8 +9,8 @@ import com.spring.vo.BookVo;
 @Repository
 public class BookDao extends CommonDao{
 	
-	public List<BookVo> list() throws Exception {
-		List<BookVo> list = getSqlSession().selectList("mapper.list");
+	public List<BookVo> list(String keyword) throws Exception {
+		List<BookVo> list = getSqlSession().selectList("mapper.list", keyword);
 		return list;
 	}
 	
