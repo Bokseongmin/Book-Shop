@@ -2,7 +2,8 @@ package com.spring.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.spring.dao.BookDao;
@@ -11,7 +12,7 @@ import com.spring.vo.BookVo;
 @Service
 public class BookServiceImpl implements BookService{
 	
-	@Autowired
+	@Resource
 	private BookDao dao;
 
 	public List<BookVo> list(String keyword) throws Exception {

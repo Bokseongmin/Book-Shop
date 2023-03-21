@@ -7,6 +7,8 @@ public class BookVo {
 	private String title;
 	private String category;
 	private int price;
+	private String book_img;
+	private String book_img_tmp;
 	private Date insert_date;
 	
 	public long getBook_id() {
@@ -32,6 +34,18 @@ public class BookVo {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getBook_img() {
+		return book_img;
+	}
+	public void setBook_img(String book_img) {
+		this.book_img = book_img;
+	}
+	public String getBook_img_tmp() {
+		return book_img_tmp;
+	}
+	public void setBook_img_tmp(String book_img_tmp) {
+		this.book_img_tmp = book_img_tmp;
 	}
 	public Date getInsert_date() {
 		return insert_date;

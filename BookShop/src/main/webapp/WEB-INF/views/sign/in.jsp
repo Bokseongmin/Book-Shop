@@ -29,33 +29,18 @@
 		</nav>
 
 		<section>
-			<form role="form" method="POST" autocomplete="off" enctype="multipart/form-data">
+			<form method="POST">
 				<div class="mb-3">
-					<label for="title" class="form-label">Title</label>
-					<input class="form-control" type="text" name="title" id="title">
+					<label for="user_id" class="form-label">이름</label>
+					<input type="text" class="form-control" id="user_id" name="user_id">
 				</div>
 				<div class="mb-3">
-					<label for="category" class="form-label">Category</label>
-					<input class="form-control" type="text" name="category" id="category">
+					<label for="pass" class="form-label">이름</label>
+					<input type="text" class="form-control" id="pass" name="pass">
 				</div>
 				<div class="mb-3">
-					<label for="price" class="form-label">Price</label>
-					<input class="form-control" type="text" name="price" id="price">
+					<input type="submit" class="form-control" id="pass" name="저장">
 				</div>
-				<div class="mb-3">
-					<label for="formFile" class="form-label">표지</label>
-					<input class="form-control" type="file" name="file" id="book_img" accept="image/jpg, image/png, image/gif">
-				</div>
-				<div class="mb-3">
-					<div class="select_img">
-						<img src="" class="img-thumbnail" alt="..."/>
-					</div>
-				</div>
-
-				<%=request.getRealPath("/")%>
-				<p>
-					<input type="submit" name="저장" />
-				</p>
 			</form>
 		</section>
 
@@ -63,19 +48,5 @@
 			<%@ include file="../includes/footer.jsp"%>
 		</footer>
 	</div>
-	<script>
-		$("#book_img")
-				.change(
-						function() {
-							if (this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_img img").attr("src",
-											data.target.result).width(500);
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-	</script>
 </body>
 </html>

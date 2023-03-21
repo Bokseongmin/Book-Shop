@@ -2,25 +2,61 @@
 <%@ page session="false"%>
 <html>
 <head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-	
 <title>Home</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<header>
-		<%@ include file="includes/header.jsp" %>
-	</header>
-	
-	<nav>
-		<%@ include file="includes/nav.jsp" %>
-	</nav>
-	
-	<footer>
-		<%@ include file="includes/footer.jsp" %>
-	</footer>
+	<div class="container">
+		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
+			<%@ include file="includes/header.jsp"%>
+		</header>
+		<div class="p-4 p-md-5 text-white rounded bg-dark">
+			<div class="col-md-6 px-0">
+				<h1 class="display-4 fw-bold">BOOK STORE</h1>
+			</div>
+		</div>
+		<nav class="d-flex justify-content-center py-3">
+			<%@ include file="includes/nav.jsp"%>
+		</nav>
+
+		<section>
+			<div class="justify-content-center align-items-center">
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="../resources/images/1.png" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="../resources/images/1.png" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="../resources/images/1.png" class="d-block w-100" alt="...">
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<footer class="py-3 my-4">
+			<%@ include file="includes/footer.jsp"%>
+		</footer>
+	</div>
 </body>
 </html>

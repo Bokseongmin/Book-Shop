@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper">
+<mapper namespace="bmapper">
 
 	<select id="list" parameterType="hashMap" resultType="BookVo">
 		SELECT book_id, title, category, price, insert_date
@@ -16,8 +16,8 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO book(title, category, price)
-		VALUES(#{title}, #{category}, #{price})
+		INSERT INTO book(title, category, price, book_img, book_img_tmp)
+		VALUES(#{title}, #{category}, #{price}, #{book_img}, #{book_img_tmp})
 	</insert>
 	
 	<select id="detail" resultType="BookVo">
@@ -37,6 +37,4 @@
 		FROM book
 		WHERE book_id = #{book_id}
 	</delete>
-	
-	<select id=""></select>
 </mapper>

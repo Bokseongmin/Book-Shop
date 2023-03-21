@@ -10,23 +10,23 @@ import com.spring.vo.BookVo;
 public class BookDao extends CommonDao{
 	
 	public List<BookVo> list(String keyword) throws Exception {
-		List<BookVo> list = getSqlSession().selectList("mapper.list", keyword);
+		List<BookVo> list = getSqlSession().selectList("bmapper.list", keyword);
 		return list;
 	}
 	
 	public void insert(BookVo vo) throws Exception {
-		getSqlSession().insert("mapper.insert", vo);
+		getSqlSession().insert("bmapper.insert", vo);
 	}
 	
 	public BookVo detail(int book_id) throws Exception {
-		return getSqlSession().selectOne("mapper.detail", book_id);
+		return getSqlSession().selectOne("bmapper.detail", book_id);
 	}
 	
 	public void update(BookVo vo) {
-		getSqlSession().update("mapper.update", vo);
+		getSqlSession().update("bmapper.update", vo);
 	}
 	
 	public void delete(BookVo vo) {
-		getSqlSession().delete("mapper.delete", vo);
+		getSqlSession().delete("bmapper.delete", vo);
 	}
 }

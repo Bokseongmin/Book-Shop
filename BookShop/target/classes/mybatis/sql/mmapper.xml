@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mmapper">
+
+	<insert id="signup">
+		INSERT INTO member(name, user_id, pass)
+		VALUES(#{name}, #{user_id}, #{pass})
+	</insert>
+	
+	<select id="signin">
+		SELECT user_id, pass
+		FROM member
+		WHERE user_id = #{user_id} AND pass = #{pass}
+	</select>
+	
+</mapper>
