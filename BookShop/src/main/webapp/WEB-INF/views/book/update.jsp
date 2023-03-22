@@ -29,16 +29,37 @@
 		</nav>
 
 		<section>
-			<form method="POST">
-				<p>
-					제목 : <input type="text" name="title" value="${book.title }" />
-				</p>
-				<p>
-					카테고리 : <input type="text" name="category" value="${book.category }" />
-				</p>
-				<p>
-					가격 : <input type="text" name="price" value="${book.price }" />
-				</p>
+		<form role="form" method="POST" autocomplete="off" enctype="multipart/form-data">
+				<div class="mb-3">
+					<label for="title" class="form-label">Title</label>
+					<input class="form-control" type="text" name="title" id="title" value="${book.title }" >
+				</div>
+				<div class="mb-3">
+					<label for="country" class="form-label">국가</label>
+					<input type="text" id="country" class="form-control" placeholder="${book.country }">
+				</div>
+				<div class="mb-3">
+					<label for="category" class="form-label">Category</label>
+					<input class="form-control" type="text" name="category" id="category" value="${book.category }">
+				</div>
+				<div class="mb-3">
+					<label for="price" class="form-label">Price</label>
+					<input class="form-control" type="text" name="price" id="price" value="${book.price }">
+				</div>
+				<div class="mb-3">
+					<label for="formFile" class="form-label">표지</label>
+					<input class="form-control" type="file" name="file" id="book_img" accept="image/jpg, image/png, image/gif">
+				</div>
+				<div class="mb-3">
+					<div class="selected_img">
+						<img src="${book.book_img }" class="img-thumbnailed" alt="..."/>
+					</div>
+					<div class="select_img">
+						<img src="" class="img-thumbnail" alt="..."/>
+					</div>
+				</div>
+
+				<%=request.getRealPath("/")%>
 				<p>
 					<input type="submit" name="저장" />
 				</p>
@@ -49,5 +70,19 @@
 			<%@ include file="../includes/footer.jsp"%>
 		</footer>
 	</div>
+	<script>
+		$("#book_img")
+				.change(
+						function() {
+							if (this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src",
+											data.target.result).width(500);
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+	</script>
 </body>
 </html>

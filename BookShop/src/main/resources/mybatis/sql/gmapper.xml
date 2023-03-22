@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gmapper">
+
+	<select id="list" parameterType="hashMap" resultType="BookVo">
+		SELECT *
+		FROM book
+		WHERE 1 = 1
+		<choose>
+			<when test="country == 'kr'">
+				AND country = 'kr'
+			</when>
+			<when test="country == 'jp'">
+				AND country = 'jp'
+			</when>
+			<when test="country == 'us'">
+				AND country = 'us'
+			</when>
+		</choose>
+		<if test="keyword != null and keyword != ''">
+			AND (title LIKE CONCAT('%', #{keyword}, '%')
+			OR category
+			like CONCAT('%',#{keyword},'%'))
+		</if>
+		ORDER BY insert_date desc
+	</select>
+</mapper>

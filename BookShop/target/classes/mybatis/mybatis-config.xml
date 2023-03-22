@@ -8,5 +8,6 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.spring.vo.BookVo" alias="BookVo" />
+		<typeAlias type="com.spring.vo.MemberVo" alias="MemberVo" />
 	</typeAliases>
 </configuration>

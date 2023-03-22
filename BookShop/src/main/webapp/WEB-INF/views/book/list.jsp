@@ -40,8 +40,9 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col" width="50%">제목</th>
-						<th scope="col" width="30%">카테고리</th>
+						<th scope="col" width="40%">제목</th>
+						<th scope="col" width="20%">국가</th>
+						<th scope="col" width="20%">카테고리</th>
 						<th scope="col" width="20%">가격</th>
 					</tr>
 				</thead>
@@ -50,6 +51,7 @@
 						<tr>
 							<td><a href="detail?book_id=${row.book_id}"> ${row.title}
 							</a></td>
+							<td>${row.country}</td>
 							<td>${row.category}</td>
 							<td><fmt:formatNumber type="number" maxFractionDigits="3"
 									value="${row.price}" /></td>
@@ -57,9 +59,11 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<div class="mb-3">
-				<a class="btn btn-primary" href="create" role="button">생성</a>
-			</div>
+			<c:if test="${member.verify == 0 }">
+				<div class="mb-3">
+					<a class="btn btn-primary" href="create" role="button">생성</a>
+				</div>
+			</c:if>
 		</section>
 
 		<footer class="py-3 my-4">

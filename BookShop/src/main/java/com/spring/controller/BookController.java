@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import com.spring.service.BookService;
 import com.spring.utils.UploadFileUtils;
@@ -57,7 +58,7 @@ public class BookController {
 		}
 
 		vo.setBook_img(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		vo.setBook_img_tmp(
+		vo.setBook_img_thumb(
 				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		service.insert(vo);
 
@@ -78,14 +79,35 @@ public class BookController {
 		logger.info("book/update - GET");
 
 		BookVo vo = service.detail(book_id);
-
 		model.addAttribute("book", vo);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updatePOST(@RequestParam("book_id") int book_id, BookVo vo, Model model) throws Exception {
+	public String updatePOST(@RequestParam("book_id") int book_id, BookVo vo, Model model, MultipartFile file, HttpServletRequest req) throws Exception {
 		logger.info("book/update - POST");
 
+		// 새로운 파일이 등록되었는지 확인
+		if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			// 기존 파일을 삭제
+			new File(uploadPath + req.getParameter("book_img")).delete();
+			new File(uploadPath + req.getParameter("book_img_thumb")).delete();
+
+			// 새로 첨부한 파일을 등록
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+			String fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
+					ymdPath);
+
+			vo.setBook_img(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			vo.setBook_img_thumb(
+					File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+
+		} else { // 새로운 파일이 등록되지 않았다면
+			// 기존 이미지를 그대로 사용
+			vo.setBook_img(req.getParameter("book_img"));
+			vo.setBook_img_thumb(req.getParameter("book_img_thumb"));
+
+		}
 		vo.setBook_id(book_id);
 		service.update(vo);
 

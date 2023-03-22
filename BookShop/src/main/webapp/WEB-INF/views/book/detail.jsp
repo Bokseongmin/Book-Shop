@@ -30,25 +30,48 @@
 		</nav>
 
 		<section>
-			<p>제목 : ${book.title }</p>
-			<p>카테고리 : ${book.category }</p>
-			<p>
-				가격 :
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${book.price }" />
-			</p>
-			<p>
-				작성일 :
-				<fmt:formatDate value="${book.insert_date}" pattern="yyyy.MM.dd HH:mm:ss" />
-			</p>
-			<p>
-				<a href="update?book_id=${book.book_id }">수정</a>
-			</p>
-			<form action="delete" method="POST">
-				<input type="hidden" name="book_id" value="${book.book_id}" /> <input type="submit" value="삭제" />
-			</form>
-			<p>
-				<a href="list">목록으로</a>
-			</p>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+
+						<form>
+							<fieldset disabled>
+								<div class="mb-3">
+									<label for="title" class="form-label">제목</label>
+									<input type="text" id="title" class="form-control" placeholder="${book.title }">
+								</div>
+								<div class="mb-3">
+									<label for="country" class="form-label">국가</label>
+									<input type="text" id="country" class="form-control" placeholder="${book.country }">
+								</div>
+								<div class="mb-3">
+									<label for="category" class="form-label">카테고리</label>
+									<input type="text" id="category" class="form-control" placeholder="${book.category }">
+								</div>
+								<div class="mb-3">
+									<label for="price" class="form-label">가격</label>
+									<input type="text" id="price" class="form-control" placeholder="<fmt:formatNumber type='number' maxFractionDigits='3' value='${book.price }' />">
+								</div>
+								<div class="mb-3">
+									<label for="date" class="form-label">작성일</label>
+									<input type="text" id="date" class="form-control" placeholder="<fmt:formatDate value='${book.insert_date}' pattern='yyyy.MM.dd HH:mm:ss' />">
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="col-md-6">
+						<img src="${book.book_img }" alt="...">
+					</div>
+				</div>
+			</div>
+			<div class="d-flex justify-content-center">
+				<a class="btn btn-primary me-3" href="update?book_id=${book.book_id }">수정</a>
+				<form action="delete" method="POST">
+					<input type="hidden" name="book_id" value="${book.book_id}" />
+					<input class="btn btn-primary" type="submit" value="삭제" />
+				</form>
+				<a class="btn btn-primary ms-3" href="list">목록으로</a>
+			</div>
 		</section>
 
 		<footer class="py-3 my-4">

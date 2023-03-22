@@ -46,4 +46,9 @@ public class MemberVo {
 	public void setVerify(int verify) {
 		this.verify = verify;
 	}
+	@Override
+	public String toString() {
+		return "MemberVo [member_id=" + member_id + ", name=" + name + ", user_id=" + user_id + ", pass=" + pass
+				+ ", insert_date=" + insert_date + ", verify=" + verify + "]";
+	}
 }

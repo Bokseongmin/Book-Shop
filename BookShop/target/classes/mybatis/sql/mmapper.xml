@@ -9,8 +9,8 @@
 		VALUES(#{name}, #{user_id}, #{pass})
 	</insert>
 	
-	<select id="signin">
-		SELECT user_id, pass
+	<select id="signin" resultType="MemberVo">
+		SELECT *
 		FROM member
 		WHERE user_id = #{user_id} AND pass = #{pass}
 	</select>

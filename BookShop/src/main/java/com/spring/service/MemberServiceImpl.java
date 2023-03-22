@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,13 @@ public class MemberServiceImpl implements MemberService {
 	
 	public void signup(MemberVo vo) throws Exception {
 		dao.signup(vo);
+	}
+
+	public MemberVo signin(MemberVo vo) throws Exception {
+		return dao.signin(vo);
+	}
+
+	public void signout(HttpSession session) throws Exception {
+		session.invalidate();
 	}
 }

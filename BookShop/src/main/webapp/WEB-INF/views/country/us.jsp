@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,57 +30,45 @@
 		</nav>
 
 		<section>
-			<form role="form" method="POST" autocomplete="off" enctype="multipart/form-data">
+			<form>
 				<div class="mb-3">
-					<label for="title" class="form-label">Title</label>
-					<input class="form-control" type="text" name="title" id="title">
+					<label for="search" class="form-label">검색</label>
+					<input class="form-control" type="text" name="keyword" id="search" value="${keyword}" >
 				</div>
-				<div class="mb-3">
-					<label for="country" class="form-label">Country</label>
-					<input class="form-control" type="text" name="country" id="country">
-				</div>
-				<div class="mb-3">
-					<label for="category" class="form-label">Category</label>
-					<input class="form-control" type="text" name="category" id="category">
-				</div>
-				<div class="mb-3">
-					<label for="price" class="form-label">Price</label>
-					<input class="form-control" type="text" name="price" id="price">
-				</div>
-				<div class="mb-3">
-					<label for="formFile" class="form-label">표지</label>
-					<input class="form-control" type="file" name="file" id="book_img" accept="image/jpg, image/png, image/gif">
-				</div>
-				<div class="mb-3">
-					<div class="select_img">
-						<img src="" class="img-thumbnail" alt="..."/>
-					</div>
-				</div>
-
-				<%=request.getRealPath("/")%>
-				<p>
-					<input type="submit" name="저장" />
-				</p>
+				<input class="btn btn-primary" type="submit" value="검색" />
 			</form>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col" width="40%">제목</th>
+						<th scope="col" width="20%">국가</th>
+						<th scope="col" width="20%">카테고리</th>
+						<th scope="col" width="20%">가격</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="row" items="${books}">
+						<tr>
+							<td><a href="/book/detail?book_id=${row.book_id}"> ${row.title}
+							</a></td>
+							<td>${row.country}</td>
+							<td>${row.category}</td>
+							<td><fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${row.price}" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<c:if test="${member.verify == 0 }">
+				<div class="mb-3">
+					<a class="btn btn-primary" href="create" role="button">생성</a>
+				</div>
+			</c:if>
 		</section>
 
 		<footer class="py-3 my-4">
 			<%@ include file="../includes/footer.jsp"%>
 		</footer>
 	</div>
-	<script>
-		$("#book_img")
-				.change(
-						function() {
-							if (this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_img img").attr("src",
-											data.target.result).width(500);
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-	</script>
 </body>
 </html>

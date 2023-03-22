@@ -41,6 +41,15 @@
 		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="10485760" />
 	</beans:bean>
+	
+	<beans:bean id="AdminInterceptor" class="com.spring.interceptor.AdminInterceptor" />
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/book/create" />
+			<beans:ref bean="AdminInterceptor" />
+		</interceptor>
+	</interceptors>
 
 	<context:component-scan
 		base-package="com.spring" />

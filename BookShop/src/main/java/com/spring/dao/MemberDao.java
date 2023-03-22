@@ -10,4 +10,8 @@ public class MemberDao extends CommonDao{
 	public void signup(MemberVo vo) {
 		getSqlSession().insert("mmapper.signup", vo);
 	}
+	
+	public MemberVo signin(MemberVo vo) {
+		return getSqlSession().selectOne("mmapper.signin", vo);
+	}
 }
