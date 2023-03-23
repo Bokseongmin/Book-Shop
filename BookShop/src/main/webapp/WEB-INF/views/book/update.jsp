@@ -36,7 +36,7 @@
 				</div>
 				<div class="mb-3">
 					<label for="country" class="form-label">국가</label>
-					<input type="text" id="country" class="form-control" placeholder="${book.country }">
+					<input type="text" id="country" name="country" class="form-control" placeholder="${book.country }">
 				</div>
 				<div class="mb-3">
 					<label for="category" class="form-label">Category</label>
@@ -52,7 +52,7 @@
 				</div>
 				<div class="mb-3">
 					<div class="selected_img">
-						<img src="${book.book_img }" class="img-thumbnailed" alt="..."/>
+						<img src="${book.book_img }" class="img-thumbnail" alt="..."/>
 					</div>
 					<div class="select_img">
 						<img src="" class="img-thumbnail" alt="..."/>

@@ -28,20 +28,22 @@
 			<%@ include file="../includes/nav.jsp"%>
 		</nav>
 
-		<section>
-			<form method="POST">
-				<div class="mb-3">
-					<label for="user_id" class="form-label">아이디</label>
-					<input type="text" class="form-control" id="user_id" name="user_id">
-				</div>
-				<div class="mb-3">
-					<label for="pass" class="form-label">비밀번호</label>
-					<input type="text" class="form-control" id="pass" name="pass">
-				</div>
-				<div class="mb-3">
-					<input type="submit" class="form-control" id="pass" name="저장">
-				</div>
-			</form>
+		<section class="row justify-content-center align-items-center">
+			<div class="col-4">
+				<form method="POST">
+					<div class="mb-3">
+						<label for="user_id" class="form-label">아이디</label>
+						<input type="text" class="form-control" id="user_id" name="user_id">
+					</div>
+					<div class="mb-3">
+						<label for="pass" class="form-label">비밀번호</label>
+						<input type="text" class="form-control" id="pass" name="pass">
+					</div>
+					<div class="mb-3">
+						<input type="submit" class="form-control" id="pass" name="저장">
+					</div>
+				</form>
+			</div>
 		</section>
 
 		<footer class="py-3 my-4">

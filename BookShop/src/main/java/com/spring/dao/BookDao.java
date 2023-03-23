@@ -19,6 +19,7 @@ public class BookDao extends CommonDao{
 	}
 	
 	public BookVo detail(int book_id) throws Exception {
+		getSqlSession().update("bmapper.view_cnt", book_id);
 		return getSqlSession().selectOne("bmapper.detail", book_id);
 	}
 	

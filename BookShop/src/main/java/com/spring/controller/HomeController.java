@@ -38,4 +38,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	public String about(Locale locale, Model model) throws Exception {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		List<BookVo> top3 = service.top3();
+		model.addAttribute("books", top3);
+		
+		return "home";
+	}
 }

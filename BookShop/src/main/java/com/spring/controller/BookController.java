@@ -70,7 +70,7 @@ public class BookController {
 		logger.info("book/detail - GET");
 
 		BookVo vo = service.detail(book_id);
-
+		
 		model.addAttribute("book", vo);
 	}
 
@@ -109,6 +109,7 @@ public class BookController {
 
 		}
 		vo.setBook_id(book_id);
+		System.out.println(vo.toString());
 		service.update(vo);
 
 		model.addAttribute("book_id", book_id);

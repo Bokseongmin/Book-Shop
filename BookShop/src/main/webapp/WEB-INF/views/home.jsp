@@ -1,4 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <title>Home</title>
@@ -25,8 +27,9 @@
 		</nav>
 
 		<section>
+			<span class="h2">추천 도서</span>
 			<div class="d-flex justify-content-center align-items-center">
-				<div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true" style="width:200px; height:300px;">
+				<div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true" style="width:300px; height:500px;">
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -35,7 +38,9 @@
 					<div class="carousel-inner">
 						<c:forEach var="row" items="${books}" varStatus="status">
 							<div class="carousel-item ${status.index == 0 ? ' active' : ''}">
-								<img src="${row.book_img_thumb}" class="d-block w-100" alt="...">
+								<a href="book/detail?book_id=${row.book_id}">
+									<img src="${row.book_img_thumb}" class="d-block w-100" style="width:300px; height:500px;" alt="...">
+								</a>
 							</div>
 						</c:forEach>
 					</div>
@@ -49,6 +54,44 @@
 					</button>
 				</div>
 			</div>
+			<form>
+				<div class="mb-3">
+					<label for="search" class="form-label">검색</label>
+					<input class="form-control" type="text" name="keyword" id="search" value="${keyword}" >
+				</div>
+				<input class="btn btn-primary" type="submit" value="검색" />
+			</form>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col" width="40%">제목</th>
+						<th scope="col" width="15%">국가</th>
+						<th scope="col" width="15%">카테고리</th>
+						<th scope="col" width="20%">가격</th>
+						<th scope="col" width="10%">조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="row" items="${books}">
+						<tr>
+							<td>
+								<a href="book/detail?book_id=${row.book_id}"> ${row.title} </a>
+							</td>
+							<td>${row.country}</td>
+							<td>${row.category}</td>
+							<td>
+								<fmt:formatNumber type="number" maxFractionDigits="3" value="${row.price}" />
+							</td>
+							<td>${row.view_cnt}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<c:if test="${member.verify == 0 }">
+				<div class="mb-3">
+					<a class="btn btn-primary" href="book/create" role="button">생성</a>
+				</div>
+			</c:if>
 		</section>
 
 		<footer class="py-3 my-4">

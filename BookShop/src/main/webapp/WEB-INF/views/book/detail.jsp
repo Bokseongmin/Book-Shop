@@ -33,7 +33,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-
 						<form>
 							<fieldset disabled>
 								<div class="mb-3">
@@ -56,11 +55,15 @@
 									<label for="date" class="form-label">작성일</label>
 									<input type="text" id="date" class="form-control" placeholder="<fmt:formatDate value='${book.insert_date}' pattern='yyyy.MM.dd HH:mm:ss' />">
 								</div>
+								<div class="mb-3">
+									<label for="view_cnt" class="form-label">조회수</label>
+									<input type="text" id="view_cnt" class="form-control" placeholder="${book.view_cnt }">
+								</div>
 							</fieldset>
 						</form>
 					</div>
 					<div class="col-md-6">
-						<img src="${book.book_img }" alt="...">
+						<img class="img-thumbnail" src="${book.book_img }" alt="...">
 					</div>
 				</div>
 			</div>

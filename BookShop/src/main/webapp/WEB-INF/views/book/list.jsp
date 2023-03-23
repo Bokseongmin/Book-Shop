@@ -41,20 +41,24 @@
 				<thead>
 					<tr>
 						<th scope="col" width="40%">제목</th>
-						<th scope="col" width="20%">국가</th>
-						<th scope="col" width="20%">카테고리</th>
+						<th scope="col" width="15%">국가</th>
+						<th scope="col" width="15%">카테고리</th>
 						<th scope="col" width="20%">가격</th>
+						<th scope="col" width="10%">조회수</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="row" items="${books}">
 						<tr>
-							<td><a href="detail?book_id=${row.book_id}"> ${row.title}
-							</a></td>
+							<td>
+								<a href="detail?book_id=${row.book_id}"> ${row.title} </a>
+							</td>
 							<td>${row.country}</td>
 							<td>${row.category}</td>
-							<td><fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${row.price}" /></td>
+							<td>
+								<fmt:formatNumber type="number" maxFractionDigits="3" value="${row.price}" />
+							</td>
+							<td>${row.view_cnt}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

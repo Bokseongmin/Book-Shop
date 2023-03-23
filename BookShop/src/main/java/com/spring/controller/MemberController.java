@@ -36,7 +36,7 @@ public class MemberController {
 		
 		service.signup(vo);
 		
-		return "sign/in";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/in", method = RequestMethod.GET)
