@@ -19,6 +19,9 @@
 				AND country = 'us'
 			</when>
 		</choose>
+		<if test="category != null and category !=''">
+			AND category = #{category}
+		</if>
 		<if test="keyword != null and keyword != ''">
 			AND (title LIKE CONCAT('%', #{keyword}, '%')
 			OR category

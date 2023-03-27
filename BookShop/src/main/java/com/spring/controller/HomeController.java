@@ -20,30 +20,34 @@ import com.spring.vo.BookVo;
  */
 @Controller
 public class HomeController {
-	
+
 	@Resource
 	HomeService service;
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		List<BookVo> top3 = service.top3();
 		model.addAttribute("books", top3);
-		
+
 		return "home";
 	}
-	
+
+	@RequestMapping(value = "/about")
 	public String about(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		List<BookVo> top3 = service.top3();
 		model.addAttribute("books", top3);
-		
-		return "home";
+
+		return "about";
 	}
 }

@@ -15,8 +15,8 @@ public class GlobalServiceImpl implements GlobalService{
 	@Resource
 	private GlobalDao dao;
 	
-	public List<BookVo> list(String country, String keyword) throws Exception {
-		return dao.list(country, keyword);
+	public List<BookVo> list(String country, String keyword, String category) throws Exception {
+		return dao.list(country, keyword, category);
 	}
 	
 }

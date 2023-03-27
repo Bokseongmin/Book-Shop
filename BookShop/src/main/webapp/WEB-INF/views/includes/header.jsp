@@ -4,14 +4,14 @@
 	<span class="fs-4">Book Shop </span>
 </a>
 <ul class="nav nav-pills">
+	<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
 	<c:if test="${member != null}">
 		<li class="nav-item mt-2 mx-1"><a>환영합니다 ${member.name }님</a></li>
+		<li class="nav-item"><a href="/sign/out" class="nav-link">Sign out</a></li>
 	</c:if>
-	<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
 	<c:if test="${member == null}">
 		<li class="nav-item"><a href="/sign/in" class="nav-link">Sign in</a></li>
 		<li class="nav-item"><a href="/sign/up" class="nav-link">Sign up</a></li>
 	</c:if>
-	<li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-	<li class="nav-item"><a href="view/about" class="nav-link">About</a></li>
+	<li class="nav-item"><a href="about" class="nav-link">About</a></li>
 </ul>

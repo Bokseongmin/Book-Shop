@@ -68,11 +68,13 @@
 				</div>
 			</div>
 			<div class="d-flex justify-content-center">
-				<a class="btn btn-primary me-3" href="update?book_id=${book.book_id }">수정</a>
-				<form action="delete" method="POST">
-					<input type="hidden" name="book_id" value="${book.book_id}" />
-					<input class="btn btn-primary" type="submit" value="삭제" />
-				</form>
+				<c:if test="${member.verify == 0 }">
+					<a class="btn btn-primary me-3" href="update?book_id=${book.book_id }">수정</a>
+					<form action="delete" method="POST">
+						<input type="hidden" name="book_id" value="${book.book_id}" />
+						<input class="btn btn-primary" type="submit" value="삭제" />
+					</form>
+				</c:if>
 				<a class="btn btn-primary ms-3" href="list">목록으로</a>
 			</div>
 		</section>
