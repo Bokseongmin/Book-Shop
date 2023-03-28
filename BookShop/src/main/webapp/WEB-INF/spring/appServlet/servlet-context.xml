@@ -47,6 +47,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/book/create" />
+			<mapping path="/book/update" />
+			<mapping path="/admin/*" />
 			<beans:ref bean="AdminInterceptor" />
 		</interceptor>
 	</interceptors>

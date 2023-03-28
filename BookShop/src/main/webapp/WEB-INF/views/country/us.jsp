@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-			<%@ include file="../includes/header.jsp"%>
+			<%@ include file="../include/header.jsp"%>
 		</header>
 		<div class="p-4 p-md-5 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<nav class="d-flex justify-content-center py-3">
-			<%@ include file="../includes/nav.jsp"%>
+			<%@ include file="../include/nav.jsp"%>
 		</nav>
 
 		<section>
@@ -40,21 +40,27 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col" width="40%">제목</th>
-						<th scope="col" width="20%">국가</th>
-						<th scope="col" width="20%">카테고리</th>
+						<th scope="col" width="30%">제목</th>
+						<th scope="col" width="10%">국가</th>
+						<th scope="col" width="10%">카테고리</th>
 						<th scope="col" width="20%">가격</th>
+						<th scope="col" width="10%">재고</th>
+						<th scope="col" width="10%">조회수</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="row" items="${books}">
 						<tr>
-							<td><a href="/book/detail?book_id=${row.book_id}"> ${row.title}
-							</a></td>
+							<td>
+								<a href="/book/detail?book_id=${row.book_id}"> ${row.title} </a>
+							</td>
 							<td>${row.country}</td>
 							<td>${row.category}</td>
-							<td><fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${row.price}" /></td>
+							<td>
+								<fmt:formatNumber type="number" maxFractionDigits="3" value="${row.price}" />
+							</td>
+							<td>${row.stock }</td>
+							<td>${row.view_cnt}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -67,7 +73,7 @@
 		</section>
 
 		<footer class="py-3 my-4">
-			<%@ include file="../includes/footer.jsp"%>
+			<%@ include file="../include/footer.jsp"%>
 		</footer>
 	</div>
 </body>

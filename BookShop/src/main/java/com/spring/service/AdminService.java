@@ -1,5 +1,11 @@
 package com.spring.service;
 
-public class AdminService {
+import java.util.List;
 
+import com.spring.vo.MemberVo;
+
+public interface AdminService {
+	
+	// 회원 목록
+	public List<MemberVo> list() throws Exception;
 }

@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-			<%@ include file="../includes/header.jsp"%>
+			<%@ include file="../include/header.jsp"%>
 		</header>
 		<div class="p-4 p-md-5 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<nav class="d-flex justify-content-center py-3">
-			<%@ include file="../includes/nav.jsp"%>
+			<%@ include file="../include/nav.jsp"%>
 		</nav>
 
 		<section>
@@ -35,16 +35,28 @@
 					<input class="form-control" type="text" name="title" id="title" value="${book.title }" >
 				</div>
 				<div class="mb-3">
-					<label for="country" class="form-label">국가</label>
-					<input type="text" id="country" name="country" class="form-control" placeholder="${book.country }">
+					<label for="country" class="form-label">Country</label>
+					<select class="form-select" aria-label="Default select" name="country" id="country">
+						<option value="kr" ${book.country == 'kr' ? 'selected' : ''}>한국</option>
+						<option value="jp" ${book.country == 'jp' ? 'selected' : ''}>일본</option>
+						<option value="us" ${book.country == 'us' ? 'selected' : ''}>미국</option>
+					</select>
 				</div>
 				<div class="mb-3">
 					<label for="category" class="form-label">Category</label>
-					<input class="form-control" type="text" name="category" id="category" value="${book.category }">
+					<select class="form-select" aria-label="Default select" name="category" id="category">
+						<option value="thriller" ${book.country == 'thriller' ? 'selected' : ''}>스릴러</option>
+						<option value="action" ${book.country == 'action' ? 'selected' : ''}>액션</option>
+						<option value="fantasy" ${book.country == 'fantasy' ? 'selected' : ''}>판타지</option>
+					</select>
 				</div>
 				<div class="mb-3">
 					<label for="price" class="form-label">Price</label>
 					<input class="form-control" type="text" name="price" id="price" value="${book.price }">
+				</div>
+				<div class="mb-3">
+					<label for="price" class="form-label">재고</label>
+					<input class="form-control" type="text" name="stock" id="stock" value="${book.stock }">
 				</div>
 				<div class="mb-3">
 					<label for="formFile" class="form-label">표지</label>
@@ -67,7 +79,7 @@
 		</section>
 
 		<footer class="py-3 my-4">
-			<%@ include file="../includes/footer.jsp"%>
+			<%@ include file="../include/footer.jsp"%>
 		</footer>
 	</div>
 	<script>

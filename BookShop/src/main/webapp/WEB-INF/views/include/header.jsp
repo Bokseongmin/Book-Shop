@@ -7,11 +7,14 @@
 	<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
 	<c:if test="${member != null}">
 		<li class="nav-item mt-2 mx-1"><a>환영합니다 ${member.name }님</a></li>
+		<c:if test="${member.verify == 0 }">
+			<li class="nav-item mt-2 mx-1"><a href="/admin/home">관리</a></li>
+		</c:if>
 		<li class="nav-item"><a href="/sign/out" class="nav-link">Sign out</a></li>
 	</c:if>
 	<c:if test="${member == null}">
 		<li class="nav-item"><a href="/sign/in" class="nav-link">Sign in</a></li>
 		<li class="nav-item"><a href="/sign/up" class="nav-link">Sign up</a></li>
 	</c:if>
-	<li class="nav-item"><a href="about" class="nav-link">About</a></li>
+	<li class="nav-item"><a href="/about" class="nav-link">About</a></li>
 </ul>

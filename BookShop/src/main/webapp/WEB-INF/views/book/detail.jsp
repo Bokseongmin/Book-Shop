@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-			<%@ include file="../includes/header.jsp"%>
+			<%@ include file="../include/header.jsp"%>
 		</header>
 		<div class="p-4 p-md-5 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<nav class="d-flex justify-content-center py-3">
-			<%@ include file="../includes/nav.jsp"%>
+			<%@ include file="../include/nav.jsp"%>
 		</nav>
 
 		<section>
@@ -56,6 +56,10 @@
 									<input type="text" id="date" class="form-control" placeholder="<fmt:formatDate value='${book.insert_date}' pattern='yyyy.MM.dd HH:mm:ss' />">
 								</div>
 								<div class="mb-3">
+									<label for="view_cnt" class="form-label">재고</label>
+									<input type="text" id="stock" class="form-control" placeholder="${book.stock }">
+								</div>
+								<div class="mb-3">
 									<label for="view_cnt" class="form-label">조회수</label>
 									<input type="text" id="view_cnt" class="form-control" placeholder="${book.view_cnt }">
 								</div>
@@ -80,7 +84,7 @@
 		</section>
 
 		<footer class="py-3 my-4">
-			<%@ include file="../includes/footer.jsp"%>
+			<%@ include file="../include/footer.jsp"%>
 		</footer>
 	</div>
 </body>

@@ -8,6 +8,7 @@ public class BookVo {
 	private String country;
 	private String category;
 	private int price;
+	private int stock;
 	private String book_img;
 	private String book_img_thumb;
 	private int view_cnt;
@@ -42,6 +43,12 @@ public class BookVo {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	public String getBook_img() {
 		return book_img;

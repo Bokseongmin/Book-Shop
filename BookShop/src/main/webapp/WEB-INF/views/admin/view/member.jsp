@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 <body>
 	<div class="container">
 		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-			<%@ include file="include/header.jsp"%>
+			<%@ include file="../../include/header.jsp"%>
 		</header>
 		<div class="p-4 p-md-5 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
@@ -25,17 +26,40 @@
 			</div>
 		</div>
 		<nav class="d-flex justify-content-center py-3">
-			<%@ include file="include/nav.jsp"%>
+			<%@ include file="../include/nav.jsp"%>
 		</nav>
 
 		<section class="row justify-content-center align-items-center">
-			<div class="col-4">
-				
-			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col" width="5%">번호</th>
+						<th scope="col" width="10%">이름</th>
+						<th scope="col" width="10%">아이디</th>
+						<th scope="col" width="10%">비밀번호</th>
+						<th scope="col" width="20%">가입일</th>
+						<th scope="col" width="10%">권한수준</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="row" items="${members}">
+						<tr>
+							<td>${row.member_id}</td>
+							<td>${row.name}</td>
+							<td>${row.user_id}</td>
+							<td>${row.pass}</td>
+							<td>
+								<fmt:formatDate value='${row.insert_date}' pattern='yyyy.MM.dd HH:mm:ss' />
+							</td>
+							<td>${row.verify}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</section>
 
 		<footer class="py-3 my-4">
-			<%@ include file="include/footer.jsp"%>
+			<%@ include file="../../include/footer.jsp"%>
 		</footer>
 	</div>
 </body>

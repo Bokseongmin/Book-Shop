@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		<header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-			<%@ include file="../includes/header.jsp"%>
+			<%@ include file="../include/header.jsp"%>
 		</header>
 		<div class="p-4 p-md-5 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<nav class="d-flex justify-content-center py-3">
-			<%@ include file="../includes/nav.jsp"%>
+			<%@ include file="../include/nav.jsp"%>
 		</nav>
 
 		<section class="row justify-content-center align-items-center">
@@ -51,7 +51,7 @@
 		</section>
 
 		<footer class="py-3 my-4">
-			<%@ include file="../includes/footer.jsp"%>
+			<%@ include file="../include/footer.jsp"%>
 		</footer>
 	</div>
 </body>
