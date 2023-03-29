@@ -11,6 +11,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
 </head>
 <body>
 	<div class="container">
@@ -29,29 +35,19 @@
 		<section>
 			<span class="h2">추천 도서</span>
 			<div class="d-flex justify-content-center align-items-center">
-				<div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true" style="width:300px; height:500px;">
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-					</div>
-					<div class="carousel-inner">
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
 						<c:forEach var="row" items="${books}" varStatus="status">
-							<div class="carousel-item ${status.index == 0 ? ' active' : ''}">
+							<div class="swiper-slide">
 								<a href="book/detail?book_id=${row.book_id}">
 									<img src="${row.book_img_thumb}" class="d-block w-100" style="width:300px; height:500px;" alt="...">
 								</a>
 							</div>
 						</c:forEach>
 					</div>
-					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-pagination"></div>
 				</div>
 			</div>
 			<form>
@@ -98,5 +94,24 @@
 			<%@ include file="include/footer.jsp"%>
 		</footer>
 	</div>
+	<script>
+		var swiper = new Swiper(".mySwiper", {
+			slidesPerView : 4,
+			spaceBetween : 30,
+			centeredSlides : true,
+			autoplay : {
+				delay : 2500,
+				disableOnInteraction : true,
+			},
+			pagination : {
+				el : ".swiper-pagination",
+				clickable : true,
+			},
+			navigation : {
+				nextEl : ".swiper-button-next",
+				prevEl : ".swiper-button-prev",
+			},
+		});
+	</script>
 </body>
 </html>

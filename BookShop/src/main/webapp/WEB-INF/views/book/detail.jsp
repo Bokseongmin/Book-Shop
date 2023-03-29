@@ -31,21 +31,23 @@
 
 		<section>
 			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
+				<div class="row d-flex justify-content-center align-items-center">
+					<div class="col-md-4">
 						<form>
 							<fieldset disabled>
-								<div class="mb-3">
+								<div class="mb-5">
 									<label for="title" class="form-label">제목</label>
 									<input type="text" id="title" class="form-control" placeholder="${book.title }">
 								</div>
-								<div class="mb-3">
-									<label for="country" class="form-label">국가</label>
-									<input type="text" id="country" class="form-control" placeholder="${book.country }">
-								</div>
-								<div class="mb-3">
-									<label for="category" class="form-label">카테고리</label>
-									<input type="text" id="category" class="form-control" placeholder="${book.category }">
+								<div class="input-group-text ">
+									<div class="mb-3">
+										<label for="country" class="form-label">국가</label>
+										<input type="text" id="country" class="form-control" placeholder="${book.country }">
+									</div>
+									<div class="mb-3">
+										<label for="category" class="form-label">카테고리</label>
+										<input type="text" id="category" class="form-control" placeholder="${book.category }">
+									</div>
 								</div>
 								<div class="mb-3">
 									<label for="price" class="form-label">가격</label>
@@ -66,8 +68,8 @@
 							</fieldset>
 						</form>
 					</div>
-					<div class="col-md-6">
-						<img class="img-thumbnail" src="${book.book_img }" alt="...">
+					<div class="col-md-5 d-flex justify-content-center align-items-center">
+						<img class="img-thumbnail" src="${book.book_img }" style="width:300px; height:500px;" alt="...">
 					</div>
 				</div>
 			</div>

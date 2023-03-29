@@ -29,53 +29,59 @@
 		</nav>
 
 		<section>
-		<form role="form" method="POST" autocomplete="off" enctype="multipart/form-data">
-				<div class="mb-3">
-					<label for="title" class="form-label">Title</label>
-					<input class="form-control" type="text" name="title" id="title" value="${book.title }" >
-				</div>
-				<div class="mb-3">
-					<label for="country" class="form-label">Country</label>
-					<select class="form-select" aria-label="Default select" name="country" id="country">
-						<option value="kr" ${book.country == 'kr' ? 'selected' : ''}>한국</option>
-						<option value="jp" ${book.country == 'jp' ? 'selected' : ''}>일본</option>
-						<option value="us" ${book.country == 'us' ? 'selected' : ''}>미국</option>
-					</select>
-				</div>
-				<div class="mb-3">
-					<label for="category" class="form-label">Category</label>
-					<select class="form-select" aria-label="Default select" name="category" id="category">
-						<option value="thriller" ${book.country == 'thriller' ? 'selected' : ''}>스릴러</option>
-						<option value="action" ${book.country == 'action' ? 'selected' : ''}>액션</option>
-						<option value="fantasy" ${book.country == 'fantasy' ? 'selected' : ''}>판타지</option>
-					</select>
-				</div>
-				<div class="mb-3">
-					<label for="price" class="form-label">Price</label>
-					<input class="form-control" type="text" name="price" id="price" value="${book.price }">
-				</div>
-				<div class="mb-3">
-					<label for="price" class="form-label">재고</label>
-					<input class="form-control" type="text" name="stock" id="stock" value="${book.stock }">
-				</div>
-				<div class="mb-3">
-					<label for="formFile" class="form-label">표지</label>
-					<input class="form-control" type="file" name="file" id="book_img" accept="image/jpg, image/png, image/gif">
-				</div>
-				<div class="mb-3">
-					<div class="selected_img">
-						<img src="${book.book_img }" class="img-thumbnail" alt="..."/>
-					</div>
-					<div class="select_img">
-						<img src="" class="img-thumbnail" alt="..."/>
-					</div>
-				</div>
+			<div class="container">
+				<div class="row d-flex justify-content-center align-items-center">
+					<div class="col-md-4">
+						<form role="form" method="POST" autocomplete="off" enctype="multipart/form-data">
+							<div class="mb-3">
+								<label for="title" class="form-label">Title</label>
+								<input class="form-control" type="text" name="title" id="title" value="${book.title }">
+							</div>
+							<div class="mb-3">
+								<label for="country" class="form-label">Country</label> <select class="form-select" aria-label="Default select" name="country" id="country">
+									<option value="kr" ${book.country == 'kr' ? 'selected' : ''}>한국</option>
+									<option value="jp" ${book.country == 'jp' ? 'selected' : ''}>일본</option>
+									<option value="us" ${book.country == 'us' ? 'selected' : ''}>미국</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label for="category" class="form-label">Category</label> <select class="form-select" aria-label="Default select" name="category" id="category">
+									<option value="thriller" ${book.country == 'thriller' ? 'selected' : ''}>스릴러</option>
+									<option value="action" ${book.country == 'action' ? 'selected' : ''}>액션</option>
+									<option value="fantasy" ${book.country == 'fantasy' ? 'selected' : ''}>판타지</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label for="price" class="form-label">Price</label>
+								<input class="form-control" type="text" name="price" id="price" value="${book.price }">
+							</div>
+							<div class="mb-3">
+								<label for="price" class="form-label">재고</label>
+								<input class="form-control" type="text" name="stock" id="stock" value="${book.stock }">
+							</div>
+							<div class="mb-3">
+								<label for="formFile" class="form-label">표지</label>
+								<input class="form-control" type="file" name="file" id="book_img" accept="image/jpg, image/png, image/gif">
+							</div>
+							<div class="mb-3">
+								<div class="selected_img">
+									<label>이전 이미지</label>
+									<img src="${book.book_img }" class="img-thumbnail" style="width:300px; height:500px;" alt="..." />
+								</div>
+								<div class="select_img">
+									<label>새 이미지</label>
+									<img src="" class="img-thumbnail" style="width:300px; height:500px;" alt="..." />
+								</div>
+							</div>
 
-				<%=request.getRealPath("/")%>
-				<p>
-					<input type="submit" name="저장" />
-				</p>
-			</form>
+							<%=request.getRealPath("/")%>
+							<p>
+								<input type="submit" name="저장" />
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<footer class="py-3 my-4">
@@ -90,7 +96,7 @@
 								var reader = new FileReader;
 								reader.onload = function(data) {
 									$(".select_img img").attr("src",
-											data.target.result).width(500);
+											data.target.result);
 								}
 								reader.readAsDataURL(this.files[0]);
 							}

@@ -34,7 +34,7 @@
 	
 	<update id="update" parameterType="BookVo">
 		UPDATE book
-		SET title = #{title}, country = #{country}, category = #{category}, price = #{price}, book_img = #{book_img}, book_img_thumb = #{book_img_thumb}, view_cnt = #{view_cnt}
+		SET title = #{title}, country = #{country}, category = #{category}, price = #{price}, book_img = #{book_img}, book_img_thumb = #{book_img_thumb}
 		WHERE book_id = #{book_id}
 	</update>
 	

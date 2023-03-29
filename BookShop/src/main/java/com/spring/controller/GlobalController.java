@@ -31,7 +31,6 @@ public class GlobalController {
 		String country = "kr";
 		List<BookVo> list = service.list(country, keyword, category);
 		model.addAttribute("books", list);
-		
 	}
 
 	@RequestMapping(value = "/jp", method = { RequestMethod.GET, RequestMethod.POST })
